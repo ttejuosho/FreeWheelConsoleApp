@@ -8,6 +8,8 @@ namespace FreeWheelConsoleApp
         {
             Console.WriteLine("Please Enter Question Number");
             Console.WriteLine("Valid Entries are 1, 2 or 3");
+            Console.WriteLine("Enter exit at any point to exit the program");
+
             int questionNumber = 0;
             bool correctEntryReceived = false;
             bool questionOneDone = false;
@@ -138,7 +140,6 @@ namespace FreeWheelConsoleApp
                             marketPopDataTableBefore.AppendLine($"  {marketPop.MarketId}\t\t {marketPop.CellId}");
                         }
 
-                        Console.WriteLine("\n");
                         Console.WriteLine(marketPopDataTableBefore);
 
                         List<int> cellIds = marketPopData.Select(c => c.CellId).ToList();
@@ -174,18 +175,17 @@ namespace FreeWheelConsoleApp
                             marketPopDataTable.AppendLine($"  {marketPop.MarketId}\t\t {marketPop.CellId}");
                         }
 
+                        Console.WriteLine("\n");
                         Console.WriteLine(marketPopDataTable);
                         Console.WriteLine("\n");
                         Console.WriteLine("Please take a look at the Q3.sql file for a possible stor proc type solution");
                         Console.WriteLine("======================= End of question " + questionNumber + " solution ==========================");
                         Console.WriteLine("============================================================================= \n");
-
                         questionThreeDone = true;
                     }
                 }
                 #endregion
             }
-
 
             static int GetQuestionNumber()
             {
@@ -195,6 +195,12 @@ namespace FreeWheelConsoleApp
                 {
                     return inputInteger;
                 }
+
+                if(input.ToLower() == "exit")
+                {
+                    Environment.Exit(0);
+                }
+
                 return GetQuestionNumber();
             }
 
@@ -206,6 +212,12 @@ namespace FreeWheelConsoleApp
                 {
                     return inputInteger;
                 }
+
+                if (input.ToLower() == "exit")
+                {
+                    Environment.Exit(0);
+                }
+
                 return GetStationId();
             }
 
